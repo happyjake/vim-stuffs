@@ -1,0 +1,192 @@
+# main()
+snippet main
+	int main(int argc, const char *argv[])
+	{
+		${1}
+		return 0;
+	}
+# #include <...>
+snippet inc
+	#include <${1:stdio}.h>${2}
+# #include "..."
+snippet Inc
+	#include "${1:`Filename("$1.h")`}"${2}
+# #ifndef ... #define ... #endif
+snippet Def
+	#ifndef $1
+	#define ${1:SYMBOL} ${2:value}
+	#endif${3}
+snippet def
+	#define
+snippet ifdef
+	#ifdef ${1:FOO}
+		${2:#define }
+	#endif
+snippet #if
+	#if ${1:FOO}
+		${2}
+	#endif
+# Header Include-Guard
+# (the randomizer code is taken directly from TextMate; it could probably be
+# cleaner, I don't know how to do it in vim script)
+snippet once
+	#ifndef ${1:`toupper(substitute(expand('%'),"\\.","_","g")."_".strftime("%y%m%d%H%M%S"))`}
+	#define $1
+
+	${2}
+
+	#endif /* end of $1 */
+# If Condition
+snippet if
+	if (${1:/* condition */})
+	{
+		${2:/* code */}
+	}
+snippet else
+	else
+	{
+		${1}
+	}
+snippet elif
+	else if(${1})
+	{
+		${2}
+	}
+	${3}
+# Tertiary conditional
+snippet ?
+	${1:/* condition */} ? ${2:a} : ${3:b}
+# Do While Loop
+snippet do
+	do
+	{
+		${2:/* code */}
+	} while (${1:/* condition */});
+# While Loop
+snippet wh
+	while (${1:/* condition */})
+	{
+		${2:/* code */}
+	}
+# For Loop
+snippet for
+	for (${2:i} = 0; $2 < ${1:count}; $2${3:++})
+	{
+		${4:/* code */}
+	}
+# Custom For Loop
+snippet forr
+	for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++})
+	{
+		${5:/* code */}
+	}
+# switch
+snippet switch
+	switch(${1})
+	{
+		${2}
+	};
+snippet case
+	case ${1}:
+	{
+		${2}
+	}
+	break;
+	${3}
+snippet default
+	default:
+	{
+		${1}
+	}
+# Function
+snippet fun
+	// ------------------------------------------------------------------------
+	// 用途：${1:to be or not to be...}
+	// 作者：rongkf
+	// 日期：`strftime("%Y-%m-%d")`
+	// ------------------------------------------------------------------------
+	${3:void} ${2:function_name}(${4})
+	{
+		${5:/* to be... */}
+	}
+snippet //f
+	// ------------------------------------------------------------------------
+	// 用途：${1:to be or not to be...}
+	// 作者：rongkf
+	// 日期：`strftime("%Y-%m-%d")`
+	// ------------------------------------------------------------------------
+# Function Declaration
+snippet fund
+	${1:void} ${2:function_name}(${3});${4}
+# Typedef
+snippet td
+	typedef ${1:int} ${2:MyCustomType};${3}
+# Struct
+snippet st
+	struct ${1:`Filename('$1_t', 'name')`}
+	{
+		${2:/* data */}
+	}${3: /* optional variable list */};${4}
+# Typedef struct
+snippet tds
+	typedef struct ${2:_$1 }
+	{
+		${3:/* data */}
+	} ${1:`Filename('$1_t', 'name')`};
+# Typdef enum
+snippet tde
+	typedef enum {
+		${1:/* data */}
+	} ${2:foo};
+# printf
+# unfortunately version this isn't as nice as TextMates's, given the lack of a
+# dynamic `...`
+snippet pr
+	printf("${1:%s}\n"${2});${3}
+# fprintf (again, this isn't as nice as TextMate's version, but it works)
+snippet fpr
+	fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
+# normal ones
+snippet [
+	[${1}]${2}
+snippet (
+	(${1})${2}
+snippet "
+	"${1}"${2}
+snippet '
+	'${1}'${2}
+snippet ("
+	("${1}")${2}
+snippet _T
+	_T("${1}")${2}
+# ucweb specific
+snippet //r
+	// rongkf ${1:edit} `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>{
+	// 原因：${2:<不告诉你>}
+		${3:/* ... */}
+	// rongkf ${1:edit} `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>}
+snippet //ra
+	// rongkf add `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>{
+	// 目的：${1:<不告诉你>}
+		${2:/* ... */}
+	// rongkf add `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>}
+snippet //raa
+	// rongkf add `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>{
+	// 目的：添加使用皮肤脚本功能
+	// rongkf add `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>}
+snippet //rd
+	// rongkf delete `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>{
+	// 原因：${1:<不告诉你>}
+		${2:/* ... */}
+	// rongkf delete `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>}
+snippet //re
+	// rongkf edit `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>{
+	// 原因：${1:<不告诉你>}
+		${2:/* ... */}
+	// rongkf edit `strftime("%Y-%m-%d")` <`strftime("%y%m%d%H%M%S")`>}
+snippet //
+	// ------------------------------------------------------------------------
+	// ${1:to be or not to be...}
+	// ------------------------------------------------------------------------
+snippet /*
+	/* ${1} */${2}
