@@ -4,3 +4,24 @@
 snippet --r	"signed as rongkf and a date"
 --rongkf `!v strftime("%Y-%m-%d")`
 endsnippet
+
+snippet //ra "--rongkf added
+// rongkf added `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>{
+// 原因：${1:<不告诉你>}
+	$0
+// rongkf added `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>}
+endsnippet
+
+snippet //re "--rongkf edited
+// rongkf edit `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>{
+// 原因：${1:<不告诉你>}
+	$0
+// rongkf edit `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>}
+endsnippet
+
+snippet //rd "--rongkf deleted
+// rongkf delete `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>{
+// 原因：${1:<不告诉你>}
+	$0
+// rongkf delete `!v strftime("%Y-%m-%d")` <`!v strftime("%y%m%d%H%M%S")`>}
+endsnippet

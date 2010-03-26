@@ -148,3 +148,14 @@ snippet //3
 //        ---- ${1:....} ----
 ${2}
 endsnippet
+
+snippet bbox "A nice box over the full width" b
+`!p
+totallen = 71
+c = '/'
+res = 76*c + '\n' + 2*c + " "+ (70-len(t[1]))/2*' '
+`${1:content}`!p
+c = '/'
+a = 70-len(t[1]); res = (a/2 + a%2) * " " + " " + 2*c + '\n' + 76*c`
+$0
+endsnippet
